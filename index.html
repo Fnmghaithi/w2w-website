@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>what2wear - AI Stylist & Outfit Planner</title>
+    <link rel="icon" type="image/png" href="1024.png">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9fafb;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 80px;
+        }
+
+        .left-content {
+            flex: 1;
+            max-width: 520px;
+            min-width: 300px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .company-name {
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .main-heading {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 2vw, 18px);
+            color: #6b7280;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 0;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+        }
+
+        .email-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .join-btn {
+            padding: 16px 28px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        .join-btn:active {
+            transform: translateY(0);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .social-link:hover {
+            color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+            transform: translateY(-1px);
+        }
+
+        .social-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        .right-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 400px;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: clamp(280px, 25vw, 320px);
+            height: clamp(570px, 52vw, 650px);
+            background: #1f2937;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-content {
+            width: 100%;
+            height: 100%;
+            background: black;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .video-content video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Desktop (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                gap: 100px;
+                padding: 80px 40px;
+            }
+            
+            .main-heading {
+                font-size: 64px;
+            }
+        }
+
+        /* Tablet Landscape (768px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .container {
+                gap: 60px;
+                padding: 60px 30px;
+            }
+            
+            .main-heading {
+                font-size: 56px;
+            }
+            
+            .phone-mockup {
+                width: 300px;
+                height: 600px;
+            }
+        }
+
+        /* Tablet Portrait (481px - 767px) */
+        @media (max-width: 767px) and (min-width: 481px) {
+            .container {
+                flex-direction: column;
+                gap: 50px;
+                padding: 40px 30px;
+                text-align: center;
+                justify-content: flex-start;
+            }
+
+            .left-content {
+                max-width: 100%;
+                order: 1;
+            }
+
+            .right-content {
+                order: 2;
+                max-width: 100%;
+            }
+
+            .main-heading {
+                font-size: 48px;
+            }
+
+            .phone-mockup {
+                width: 300px;
+                height: 600px;
+            }
+
+            .email-form {
+                max-width: 500px;
+                margin: 0 auto 24px auto;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Mobile (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                flex-direction: column;
+                gap: 40px;
+                padding: 30px 20px;
+                text-align: center;
+                justify-content: flex-start;
+            }
+
+            .left-content {
+                max-width: 100%;
+                order: 1;
+            }
+
+            .right-content {
+                order: 2;
+                max-width: 100%;
+            }
+
+            .logo-section {
+                justify-content: center;
+                margin-bottom: 30px;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .company-name {
+                font-size: 24px;
+            }
+
+            .main-heading {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .email-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .join-btn {
+                width: 100%;
+                padding: 16px 24px;
+            }
+
+            .phone-mockup {
+                width: 260px;
+                height: 520px;
+            }
+
+            .social-links {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+        }
+
+        /* Extra small devices (under 320px) */
+        @media (max-width: 319px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .main-heading {
+                font-size: 28px;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                flex-direction: row;
+                padding: 20px;
+                gap: 40px;
+            }
+
+            .main-heading {
+                font-size: 36px;
+                margin-bottom: 16px;
+            }
+
+            .subtitle {
+                margin-bottom: 24px;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="1024.png" alt="what2wear logo">
+                </div>
+                <div class="company-name">what2wear</div>
+            </div>
+            
+            <h1 class="main-heading">Never Ask <span style="color: #8C8C8D;">"What Should I Wear?"</span> Again 👀</h1>
+            
+            <p class="subtitle">
+                Discover outfit ideas, try them on virtually, and organize your wardrobe — all in one app.
+            </p>
+            
+            <form class="email-form" action="https://submit-form.com/0cVb8yTQx" method="POST">
+                <input type="email" class="email-input" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="join-btn">Join waitlist</button>
+            </form>
+            
+            <div class="social-links">
+                <a href="https://twitter.com/Fnmghaithi" target="_blank" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>Follow @fnmghaithi</span>
+                </a>
+                <a href="https://www.linkedin.com/in/fnmghaithi/" target="_blank" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>Connect on LinkedIn</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="right-content">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="video-content">
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline>
+                            <source src="simulator-recording.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-fallback">
+                            <p>Video not available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission with loading state for better UX
+        document.querySelector('.email-form').addEventListener('submit', function (e) {
+            const submitBtn = document.querySelector('.join-btn');
+            const emailInput = document.querySelector('.email-input');
+
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Joining...';
+            submitBtn.disabled = true;
+
+            // The form will submit naturally to Formspark
+            // After submission, Formspark will handle the redirect or show success message
+
+            // Optional: Reset button state after a delay (in case of network issues)
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 5000);
+        });
+
+        // Add some interactive elements
+        document.querySelector('.phone-mockup').addEventListener('click', function () {
+            // You can add phone interaction here if needed
+        });
+    </script>
+</body>
+</html>
