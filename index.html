@@ -22,14 +22,22 @@
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 80px;
         }
 
@@ -86,85 +94,32 @@
             line-height: 1.6;
         }
 
-        .email-form {
+        .download-buttons {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-            width: 100%;
-        }
-
-        .email-input {
-            flex: 1;
-            min-width: 0;
-            padding: 16px 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 16px;
-            background: white;
-            transition: border-color 0.3s ease;
-        }
-
-        .email-input:focus {
-            outline: none;
-            border-color: #8B5CF6;
-        }
-
-        .email-input::placeholder {
-            color: #9ca3af;
-        }
-
-        .join-btn {
-            padding: 16px 28px;
-            background: black;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .join-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-        }
-
-        .join-btn:active {
-            transform: translateY(0);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
+            gap: 16px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
-        }
-
-        .social-link {
-            color: rgb(156 163 175 / var(--tw-text-opacity, 1));
-            text-decoration: none;
-            font-size: 14px;
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            padding: 8px 0;
         }
 
-        .social-link:hover {
-            color: rgb(107 114 128 / var(--tw-text-opacity, 1));
-            transform: translateY(-1px);
+        .app-store-btn {
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .social-link svg {
-            transition: transform 0.3s ease;
+        .app-store-btn:hover {
+            transform: translateY(-4px);
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
         }
 
-        .social-link:hover svg {
-            transform: scale(1.1);
+        .app-store-btn img {
+            height: 50px;
+            width: auto;
+            display: block;
         }
+
+
 
         .right-content {
             flex: 1;
@@ -194,78 +149,195 @@
             position: relative;
         }
 
-        .video-content {
+        .phone-content {
             width: 100%;
             height: 100%;
-            background: black;
+            background: white;
             border-radius: 32px;
             overflow: hidden;
         }
 
-        .video-content video {
+        .phone-content img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 32px;
         }
 
-        .video-fallback {
+        /* Features Section */
+        .features-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-heading h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+
+        .features-heading p {
+            font-size: 18px;
+            color: #6b7280;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #a78bfa 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            background: #f3f4f6;
-            color: #6b7280;
-            font-size: 14px;
-            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
         }
 
-        /* Desktop (1200px+) */
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #EC4899 0%, #f472b6 100%);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #3B82F6 0%, #60a5fa 100%);
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            background: linear-gradient(135deg, #10B981 0%, #34d399 100%);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #8B5CF6 0%, #a78bfa 100%);
+        }
+
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cta-buttons .app-store-btn {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .cta-buttons .app-store-btn:hover {
+            transform: translateY(-4px);
+            filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.3));
+        }
+
+        .cta-buttons .app-store-btn img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Responsive */
         @media (min-width: 1200px) {
-            .container {
-                gap: 100px;
+            .hero {
                 padding: 80px 40px;
             }
-            
+
+            .hero-container {
+                gap: 100px;
+            }
+
             .main-heading {
                 font-size: 64px;
             }
         }
 
-        /* Tablet Landscape (768px - 1199px) */
         @media (max-width: 1199px) and (min-width: 768px) {
-            .container {
+            .hero-container {
                 gap: 60px;
-                padding: 60px 30px;
-            }
-            
-            .main-heading {
-                font-size: 56px;
-            }
-            
-            .phone-mockup {
-                width: 300px;
-                height: 600px;
-            }
-        }
-
-        /* Tablet Portrait (481px - 767px) */
-        @media (max-width: 767px) and (min-width: 481px) {
-            .container {
-                flex-direction: column;
-                gap: 50px;
-                padding: 40px 30px;
-                text-align: center;
-                justify-content: flex-start;
-            }
-
-            .left-content {
-                max-width: 100%;
-                order: 1;
-            }
-
-            .right-content {
-                order: 2;
-                max-width: 100%;
             }
 
             .main-heading {
@@ -273,37 +345,76 @@
             }
 
             .phone-mockup {
-                width: 300px;
-                height: 600px;
+                width: 280px;
+                height: 560px;
+            }
+        }
+
+        @media (max-width: 767px) and (min-width: 481px) {
+            .hero {
+                min-height: auto;
+                padding: 40px 30px;
             }
 
-            .email-form {
-                max-width: 500px;
-                margin: 0 auto 24px auto;
+            .hero-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .left-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .right-content {
+                order: -1;
+                max-width: 100%;
+            }
+
+            .main-heading {
+                font-size: 40px;
+            }
+
+            .download-buttons {
+                justify-content: center;
             }
 
             .social-links {
                 justify-content: center;
             }
+
+            .features-heading h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                gap: 30px;
+            }
+
+            .feature-card {
+                text-align: center;
+                align-items: center;
+            }
         }
 
-        /* Mobile (320px - 480px) */
         @media (max-width: 480px) {
-            .container {
+            .hero {
+                min-height: auto;
+                padding: 30px 20px;
+            }
+
+            .hero-container {
                 flex-direction: column;
                 gap: 40px;
-                padding: 30px 20px;
-                text-align: center;
-                justify-content: flex-start;
             }
 
             .left-content {
                 max-width: 100%;
-                order: 1;
+                text-align: center;
             }
 
             .right-content {
-                order: 2;
+                order: -1;
                 max-width: 100%;
             }
 
@@ -322,28 +433,29 @@
             }
 
             .main-heading {
-                font-size: 36px;
+                font-size: 32px;
                 margin-bottom: 20px;
             }
 
             .subtitle {
-                font-size: 16px;
+                font-size: 14px;
                 margin-bottom: 30px;
             }
 
-            .email-form {
+            .download-buttons {
                 flex-direction: column;
                 gap: 12px;
             }
 
-            .join-btn {
+            .app-store-btn img {
                 width: 100%;
-                padding: 16px 24px;
+                max-width: 250px;
+                height: auto;
             }
 
             .phone-mockup {
-                width: 260px;
-                height: 520px;
+                width: 240px;
+                height: 480px;
             }
 
             .social-links {
@@ -352,129 +464,150 @@
                 align-items: center;
                 gap: 12px;
             }
+
+            .features-heading h2 {
+                font-size: 1.75rem;
+            }
+
+            .features-grid {
+                gap: 24px;
+            }
+
+            .feature-card {
+                text-align: center;
+                align-items: center;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-section p {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .app-store-btn img {
+                width: 100%;
+                max-width: 250px;
+                height: auto;
+            }
         }
 
-        /* Extra small devices (under 320px) */
         @media (max-width: 319px) {
-            .container {
-                padding: 20px 15px;
-            }
-
             .main-heading {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .phone-mockup {
-                width: 240px;
-                height: 480px;
-            }
-        }
-
-        /* Landscape orientation adjustments */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .container {
-                flex-direction: row;
-                padding: 20px;
-                gap: 40px;
-            }
-
-            .main-heading {
-                font-size: 36px;
-                margin-bottom: 16px;
-            }
-
-            .subtitle {
-                margin-bottom: 24px;
-            }
-
-            .phone-mockup {
-                width: 200px;
-                height: 400px;
+                width: 220px;
+                height: 440px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-content">
-            <div class="logo-section">
-                <div class="logo">
-                    <img src="1024.png" alt="what2wear logo">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="left-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="1024.png" alt="what2wear logo">
+                    </div>
+                    <div class="company-name">what2wear</div>
                 </div>
-                <div class="company-name">what2wear</div>
+                
+                <h1 class="main-heading">Your AI Stylist & Outfit Planner 👗</h1>
+                
+                <p class="subtitle">
+                    Organize your wardrobe, get personalized outfit suggestions, try them on virtually, and never ask "What should I wear?" again.
+                </p>
+                
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/om/app/w2w-outfit-planner-closet/id6756277733" target="_blank" class="app-store-btn ios">
+                        <img src="https://cdn.prod.website-files.com/645aa11ba485ec26c84879ba/67d2e543caa5b44c252f83a9_Download_on_the_App_Store_Badge.svg.png" alt="Download on App Store">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.fnmghaithi.w2w" target="_blank" class="app-store-btn android">
+                        <img src="https://cdn.prod.website-files.com/645aa11ba485ec26c84879ba/67d2e56b0ad9af396880842c_Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play">
+                    </a>
+                </div>
+
             </div>
             
-            <h1 class="main-heading">Never Ask <span style="color: #8C8C8D;">"What Should I Wear?"</span> Again 👀</h1>
-            
-            <p class="subtitle">
-                Discover outfit ideas with your AI stylist, try them on virtually, and organize your wardrobe — all in one app.
-            </p>
-            
-            <form class="email-form" action="https://submit-form.com/0cVb8yTQx" method="POST">
-                <input type="email" class="email-input" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="join-btn">Join waitlist</button>
-            </form>
-            
-            <div class="social-links">
-                <a href="https://twitter.com/Fnmghaithi" target="_blank" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    <span>Follow @fnmghaithi</span>
-                </a>
-                <a href="https://www.linkedin.com/in/fnmghaithi/" target="_blank" class="social-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                    <span>Connect on LinkedIn</span>
-                </a>
-            </div>
-        </div>
-        
-        <div class="right-content">
-            <div class="phone-mockup">
-                <div class="phone-screen">
-                    <div class="video-content">
-                        <video 
-                            autoplay 
-                            muted 
-                            loop 
-                            playsinline>
-                            <source src="simulator-recording.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-fallback">
-                            <p>Video not available</p>
+            <div class="right-content">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="phone-content">
+                            <img src="welcome-1.webp" alt="W2W App Screenshot">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-heading">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to style yourself with confidence</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Virtual Try-On</h3>
+                    <p class="feature-description">See how outfits look on you before wearing them with our AI-powered virtual try-on feature.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👔</div>
+                    <h3 class="feature-title">Outfit Planner & Insights</h3>
+                    <p class="feature-description">Get personalized outfit suggestions based on your style, weather, and occasion.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3 class="feature-title">Digital Wardrobe</h3>
+                    <p class="feature-description">Organize all your clothing items in one place with smart categorization and search.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Personalized Suggestions</h3>
+                    <p class="feature-description">AI-driven recommendations tailored to your preferences, body type, and lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to transform your style?</h2>
+            <p>Download W2W now and start building your perfect outfits</p>
+            <div class="cta-buttons">
+                <a href="https://apps.apple.com/om/app/w2w-outfit-planner-closet/id6756277733" target="_blank" class="app-store-btn ios">
+                    <img src="https://cdn.prod.website-files.com/645aa11ba485ec26c84879ba/67d2e543caa5b44c252f83a9_Download_on_the_App_Store_Badge.svg.png" alt="Download on App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.fnmghaithi.w2w" target="_blank" class="app-store-btn android">
+                    <img src="https://cdn.prod.website-files.com/645aa11ba485ec26c84879ba/67d2e56b0ad9af396880842c_Google_Play_Store_badge_EN.svg.png" alt="Get it on Google Play">
+                </a>
+            </div>
+        </div>
+    </section>
 
     <script>
-        // Handle form submission with loading state for better UX
-        document.querySelector('.email-form').addEventListener('submit', function (e) {
-            const submitBtn = document.querySelector('.join-btn');
-            const emailInput = document.querySelector('.email-input');
-
-            // Show loading state
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Joining...';
-            submitBtn.disabled = true;
-
-            // The form will submit naturally to Formspark
-            // After submission, Formspark will handle the redirect or show success message
-
-            // Optional: Reset button state after a delay (in case of network issues)
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 5000);
-        });
-
-        // Add some interactive elements
-        document.querySelector('.phone-mockup').addEventListener('click', function () {
-            // You can add phone interaction here if needed
+        // Track app store clicks (optional)
+        document.querySelectorAll('.app-store-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('User clicked:', this.querySelector('img').alt);
+            });
         });
     </script>
 </body>
