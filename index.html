@@ -41,11 +41,21 @@
             justify-content: center;
         }
 
-        .left-content {
-            flex: 1;
-            max-width: 600px;
-            min-width: 300px;
-            text-align: center;
+        .app-screenshot {
+            position: relative;
+            width: clamp(280px, 25vw, 350px);
+            margin-top: 60px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            background: white;
+        }
+
+        .app-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 28px;
         }
 
         .logo-section {
@@ -292,11 +302,19 @@
             .main-heading {
                 font-size: 64px;
             }
+
+            .app-screenshot {
+                width: 350px;
+            }
         }
 
         @media (max-width: 1199px) and (min-width: 768px) {
             .main-heading {
                 font-size: 48px;
+            }
+
+            .app-screenshot {
+                width: 320px;
             }
         }
 
@@ -312,6 +330,10 @@
 
             .main-heading {
                 font-size: 40px;
+            }
+
+            .app-screenshot {
+                width: 280px;
             }
 
             .features-heading h2 {
@@ -334,23 +356,11 @@
                 padding: 30px 20px;
             }
 
-            .hero-container {
-                flex-direction: column;
-                gap: 40px;
-            }
-
             .left-content {
-                max-width: 100%;
-                text-align: center;
-            }
-
-            .right-content {
-                order: -1;
                 max-width: 100%;
             }
 
             .logo-section {
-                justify-content: center;
                 margin-bottom: 30px;
             }
 
@@ -384,16 +394,10 @@
                 height: auto;
             }
 
-            .phone-mockup {
-                width: 240px;
-                height: 480px;
-            }
-
-            .social-links {
-                justify-content: center;
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
+            .app-screenshot {
+                width: 100%;
+                max-width: 280px;
+                margin-top: 40px;
             }
 
             .features-heading h2 {
@@ -500,12 +504,10 @@
                     <p class="feature-description">AI-driven recommendations tailored to your preferences, body type, and lifestyle.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- App Screenshot Section -->
-        <div style="margin-top: 60px; max-width: 400px; margin-left: auto; margin-right: auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
-            <img src="welcome-1.webp" alt="W2W App Screenshot" style="width: 100%; height: auto; display: block;">
-        </div>
+            <div class="app-screenshot">
+                <img src="welcome-1.webp" alt="W2W App Screenshot">
+            </div>
     </section>
 
     <!-- CTA Section -->
