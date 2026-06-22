@@ -36,6 +36,7 @@
             max-width: 1400px;
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
@@ -427,14 +428,10 @@
             }
         }
 
+        /* Extra small devices (under 320px) */
         @media (max-width: 319px) {
             .main-heading {
                 font-size: 24px;
-            }
-
-            .phone-mockup {
-                width: 220px;
-                height: 440px;
             }
         }
     </style>
@@ -503,6 +500,11 @@
                     <p class="feature-description">AI-driven recommendations tailored to your preferences, body type, and lifestyle.</p>
                 </div>
             </div>
+        </div>
+
+        <!-- App Screenshot Section -->
+        <div style="margin-top: 60px; max-width: 400px; margin-left: auto; margin-right: auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);">
+            <img src="welcome-1.webp" alt="W2W App Screenshot" style="width: 100%; height: auto; display: block;">
         </div>
     </section>
 
