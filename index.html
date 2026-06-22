@@ -36,19 +36,25 @@
             max-width: 1400px;
             width: 100%;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .left-content {
+            flex: 1;
+            max-width: 520px;
+            min-width: 300px;
         }
 
         .app-screenshot {
             position: relative;
             width: clamp(280px, 25vw, 350px);
-            margin-top: 60px;
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             background: white;
+            flex-shrink: 0;
         }
 
         .app-screenshot img {
@@ -63,7 +69,6 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 40px;
-            justify-content: center;
         }
 
         .logo {
@@ -112,7 +117,6 @@
             margin-bottom: 32px;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
         }
 
         .app-store-btn {
@@ -324,16 +328,30 @@
                 padding: 40px 30px;
             }
 
+            .hero-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
             .left-content {
                 max-width: 100%;
+                text-align: center;
+            }
+
+            .logo-section {
+                justify-content: center;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .app-screenshot {
+                margin-top: 0;
             }
 
             .main-heading {
                 font-size: 40px;
-            }
-
-            .app-screenshot {
-                width: 280px;
             }
 
             .features-heading h2 {
